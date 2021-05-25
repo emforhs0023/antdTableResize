@@ -15,7 +15,7 @@ function App() {
 			let id = 'rs_tb';
 			aa.id = id;
 			resizeable();
-			// clearColumnsWidth()
+			clearColumnsWidth()
 		}
 		// console.log(aa.children)
 	}, [])
@@ -41,8 +41,7 @@ function App() {
 			target.oldX = event.x;
 			target.oldWidth = target.offsetWidth;
 		}
-		console.log(column)
-		tableWidth = aa.children.clientWidth;
+		tableWidth = aa.clientWidth;
 	}
 	
 	function handleMousemove(event) {
@@ -56,14 +55,15 @@ function App() {
 			column = target;
 		}
 		let column1 = column;
+		
 		if (column1.mouseDown) {
 			column1.style.cursor = 'default';
 			var diff = (event.x - column1.oldX);
 			if (column1.oldWidth + (event.x - column1.oldX) > 0) {
-				column1.width = column1.oldWidth + diff + 30;
+				column1.style.width = column1.oldWidth + diff + 10 + "px";
 		  	}
 	
-		  	column1.style.width = column1.width;
+		  	// column1.style.width = column1.width;
 		  	// aa.style.width = tableWidth + diff + 30 + 'px';
 		  	column1.style.cursor = 'col-resize';
 		}
@@ -103,12 +103,12 @@ function App() {
   	return (
     	<div
 			className="main"
-			ref={ref}
+			ref={ref} 
 		>
-      		<div>
+      		<div className="dndnode1">
 				1
 			</div>
-			<div>
+			<div className="dndnode2">
 				2
 			</div>
     	</div>
